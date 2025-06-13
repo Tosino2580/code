@@ -9,7 +9,7 @@ const Projects = () => {
 
   const projects = [
     {
-      title: "Donator Exclusive Fashion World",
+      title: "Fax Unique Wears",
       description:
         "A responsive e-commerce landing page for a luxury fashion brand featuring product showcases and seamless social media integration.",
       technologies: [
