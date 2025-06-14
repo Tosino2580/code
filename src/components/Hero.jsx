@@ -45,7 +45,7 @@ const Hero = () => {
       "My work goes beyond visuals - I create intuitive digital experiences that users love.",
     ],
     cta: "Download My Resume",
-    resumeUrl: "https://drive.google.com/file/d/1SU1bkJNZfQ52FB7u4IbKA5W-DnBawPtf/view?usp=drivesdk", // Make sure this file exists in your public folder
+    resumeUrl: "https://drive.google.com/file/d/1TyQPvsHHsRLM1NSUCrsmBP9OnMbsVHQG/view?usp=drivesdk", // Make sure this file exists in your public folder
     socialLinks: [
       {
         name: "GitHub",
