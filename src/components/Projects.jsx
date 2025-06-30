@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import fax from "/src/assets/fax.png";
+import Flip from "/src/assets/Flip.png";
 
 
 const Projects = () => {
@@ -22,11 +23,29 @@ const Projects = () => {
       link: "http://fax-unique-collections-yzg1.vercel.app",
       github: "https://github.com/Tosino2580/fax-unique-collections/tree/main",
       features: [
-        "Integrated social media feeds (Instagram, Twitter) for brand engagement",
         "Fully responsive, mobile-first design for optimal user experience",
         "Embedded Google Maps for store location display",
         "Animated UI elements for a modern and engaging visual experience",
         "Seamless product showcase with a clean and elegant layout",
+      ],
+    },
+    {
+      title: "FLIP",
+      description:
+        " A responsive and vibrant event website designed to promote outdoor movie experiences",
+      technologies: [
+        "Tailwind CSS",
+        "JavaScript",
+        "React",
+        "Font Awesome",
+      ],
+      image: Flip,
+      link: "https://www.filminthepark.com/",
+      github: "https://github.com/Tosino2580/flip-website.git",
+      features: [
+        "Fully responsive, mobile-first design for optimal user experience",
+        "Animated UI elements for a modern and engaging visual experience",
+        
       ],
     },
   ];
