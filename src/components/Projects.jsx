@@ -1,8 +1,9 @@
 /* eslint-disable no-unused-vars */
 import { motion } from "framer-motion";
 import { useState } from "react";
-import fax from "/src/assets/fax.png";
+import fax from "/src/assets/fax-image.png";
 import Flip from "/src/assets/Flip.png";
+import Lumina from "/src/assets/lumina.png";
 
 
 const Projects = () => {
@@ -20,8 +21,8 @@ const Projects = () => {
         "Font Awesome",
       ],
       image: fax,
-      link: "http://fax-unique-collections-yzg1.vercel.app",
-      github: "https://github.com/Tosino2580/fax-unique-collections/tree/main",
+      link: "https://fax-lite-5cfa.vercel.app/",
+      github: "https://github.com/Tosino2580/Fax-Lite",
       features: [
         "Fully responsive, mobile-first design for optimal user experience",
         "Embedded Google Maps for store location display",
@@ -45,6 +46,28 @@ const Projects = () => {
       features: [
         "Fully responsive, mobile-first design for optimal user experience",
         "Animated UI elements for a modern and engaging visual experience",
+        
+      ],
+    },
+    {
+      title: "LuminaAi",
+      description:
+        "I developed an AI-powered conversational assistant similar to ChatGPT that allows users to interact with an intelligent system through natural language.",
+      technologies: [
+        "Tailwind CSS",
+        "JavaScript",
+        "React",
+        "Font Awesome",
+        "Groq API",
+      ],
+      image: Lumina,
+      link: "https://nupat-ai-clone.vercel.app/",
+      github: "https://github.com/Tosino2580/Nupat-Ai-Clone",
+      features: [
+        "Natural Language Conversations",
+        "Modern UI/UX Design",
+        "Context-Aware Responses",
+        "Message History",
         
       ],
     },
