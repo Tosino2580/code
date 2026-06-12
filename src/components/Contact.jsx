@@ -42,7 +42,7 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.message) return;
-    
+
     setIsSubmitting(true);
 
     try {
@@ -53,6 +53,7 @@ const Contact = () => {
           Accept: "application/json"
         },
         body: JSON.stringify({
+          // REPLACE THE STRING BELOW WITH YOUR WEB3FORMS ACCESS KEY
           access_key: "1a7a54ac-88b4-47a3-9e5d-4c60ed9b684e",
           name: formData.name,
           email: formData.email,
@@ -81,9 +82,9 @@ const Contact = () => {
     <section id="contact" className="relative py-24 bg-[#08090a] border-t border-white/[0.04]">
       {/* Background Decorators */}
       <div className="absolute inset-0 bg-grid-pattern opacity-20 pointer-events-none" />
-      
+
       <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
-        
+
         {/* Section Title */}
         <div className="max-w-3xl mb-16">
           <motion.p
@@ -115,7 +116,7 @@ const Contact = () => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-          
+
           {/* Left Column: Direct Coordinates */}
           <div className="lg:col-span-5 space-y-6">
             {contactMethods.map((method, index) => (
