@@ -1,120 +1,106 @@
-/* eslint-disable no-unused-vars */
 import { motion } from "framer-motion";
-import { useState } from "react";
-import fax from "/src/assets/fax-image.png";
-import Flip from "/src/assets/Flip.png";
-import Lumina from "/src/assets/lumina.png";
-
+import fax from "../assets/fax-image.png";
+import Flip from "../assets/Flip.png";
+import Lumina from "../assets/lumina.png";
 
 const Projects = () => {
-  const [hoveredProject, setHoveredProject] = useState(null);
-
   const projects = [
     {
       title: "Fax Unique Wears",
-      description:
-        "A responsive e-commerce landing page for a luxury fashion brand featuring product showcases and seamless social media integration.",
-      technologies: [
-        "Tailwind CSS",
-        "JavaScript",
-        "React",
-        "Font Awesome",
-      ],
+      description: "A responsive e-commerce landing page for a luxury fashion brand featuring product showcases and seamless social media integration.",
+      technologies: ["React", "Tailwind CSS", "JavaScript", "Font Awesome"],
       image: fax,
       link: "https://fax-lite-5cfa.vercel.app/",
       github: "https://github.com/Tosino2580/Fax-Lite",
       features: [
-        "Fully responsive, mobile-first design for optimal user experience",
-        "Embedded Google Maps for store location display",
-        "Animated UI elements for a modern and engaging visual experience",
-        "Seamless product showcase with a clean and elegant layout",
+        "Fully responsive, mobile-first design.",
+        "Interactive product showcases with clean layouts.",
+        "Embedded location mapping & social feeds.",
       ],
     },
     {
-      title: "FLIP",
-      description:
-        " A responsive and vibrant event website designed to promote outdoor movie experiences",
-      technologies: [
-        "Tailwind CSS",
-        "JavaScript",
-        "React",
-        "Font Awesome",
-      ],
+      title: "FLIP (Film In The Park)",
+      description: "A responsive and vibrant event website designed to promote outdoor movie experiences, showcasing schedules and details.",
+      technologies: ["React", "Tailwind CSS", "JavaScript", "Font Awesome"],
       image: Flip,
       link: "https://www.filminthepark.com/",
       github: "https://github.com/Tosino2580/flip-website.git",
       features: [
-        "Fully responsive, mobile-first design for optimal user experience",
-        "Animated UI elements for a modern and engaging visual experience",
-        
+        "Dynamic scheduler & film listings.",
+        "High-contrast, user-friendly UI elements.",
+        "Fluid responsive scaling for mobile viewports.",
       ],
     },
     {
-      title: "LuminaAi",
-      description:
-        "I developed an AI-powered conversational assistant similar to ChatGPT that allows users to interact with an intelligent system through natural language.",
-      technologies: [
-        "Tailwind CSS",
-        "JavaScript",
-        "React",
-        "Font Awesome",
-        "Groq API",
-      ],
+      title: "Lumina AI Assistant",
+      description: "An AI-powered conversational assistant similar to ChatGPT, allowing users to interact with models via natural language.",
+      technologies: ["React", "Tailwind CSS", "Groq API", "JavaScript"],
       image: Lumina,
       link: "https://nupat-ai-clone.vercel.app/",
       github: "https://github.com/Tosino2580/Nupat-Ai-Clone",
       features: [
-        "Natural Language Conversations",
-        "Modern UI/UX Design",
-        "Context-Aware Responses",
-        "Message History",
-        
+        "Natural language processing via API key integration.",
+        "Sleek message history & state retention.",
+        "Context-aware response handling.",
       ],
     },
   ];
 
-  const container = {
-    hidden: { opacity: 0 },
+  const containerVariants = {
+    hidden: {},
     show: {
-      opacity: 1,
       transition: {
-        staggerChildren: 0.2,
+        staggerChildren: 0.1,
       },
     },
   };
 
-  const item = {
-    hidden: { opacity: 0, y: 20 },
-    show: { opacity: 1, y: 0 },
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    show: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 100, damping: 18 } },
   };
 
   return (
-    <section id="projects" className="py-20 bg-gray-900 text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.h2
-          className="text-3xl md:text-4xl font-bold text-center mb-6"
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-        >
-          Featured <span className="text-blue-400">Projects</span>
-        </motion.h2>
+    <section id="projects" className="relative py-24 bg-[#0d0e12] border-t border-white/[0.04]">
+      {/* Background Decorators */}
+      <div className="absolute inset-0 bg-grid-pattern opacity-30 pointer-events-none" />
 
-        <motion.p
-          className="text-center text-gray-300 max-w-2xl mx-auto mb-12 text-lg"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ delay: 0.2 }}
-          viewport={{ once: true }}
-        >
-          Here are some of my recent projects showcasing my skills and
-          problem-solving approach.
-        </motion.p>
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
+        
+        {/* Section Title */}
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <motion.p
+            className="text-xs uppercase tracking-[0.2em] font-semibold text-indigo-400 mb-3"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+          >
+            My Showcase
+          </motion.p>
+          <motion.h2
+            className="text-3xl md:text-4xl font-extrabold text-white tracking-tight"
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+          >
+            Featured Projects
+          </motion.h2>
+          <motion.p
+            className="text-gray-400 text-sm md:text-base max-w-xl mx-auto mt-4"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+          >
+            A curated selection of web products I have built, demonstrating frontend engineering skills, API integrations, and user experience patterns.
+          </motion.p>
+        </div>
 
+        {/* Projects Grid */}
         <motion.div
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
-          variants={container}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          variants={containerVariants}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
@@ -122,96 +108,73 @@ const Projects = () => {
           {projects.map((project, index) => (
             <motion.div
               key={index}
-              variants={item}
-              className="relative group"
-              onMouseEnter={() => setHoveredProject(index)}
-              onMouseLeave={() => setHoveredProject(null)}
+              variants={itemVariants}
+              className="bg-[#0f1115]/50 border border-white/[0.06] hover:border-white/[0.12] rounded-2xl overflow-hidden shadow-2xl transition-all duration-300 flex flex-col group h-full"
             >
-              <div className="bg-gray-800 rounded-xl overflow-hidden shadow-2xl hover:shadow-blue-500/20 transition-all duration-300 h-full flex flex-col">
-                {/* Project Image */}
-                <div className="h-52 bg-gradient-to-br from-gray-700 to-gray-900 relative overflow-hidden">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className={`w-full h-full object-cover transition-transform duration-700 ${
-                      hoveredProject === index ? "scale-105" : "scale-100"
-                    }`}
-                  />
-                  <div
-                    className={`absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${
-                      hoveredProject === index ? "opacity-100" : "opacity-0"
-                    }`}
-                  />
+              {/* Project Image Frame */}
+              <div className="relative aspect-video w-full overflow-hidden bg-black/40 border-b border-white/[0.06]">
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-[#08090a]/20 group-hover:bg-[#08090a]/0 transition-colors duration-500" />
+              </div>
+
+              {/* Project Content */}
+              <div className="p-6 flex-grow flex flex-col justify-between">
+                <div>
+                  <h3 className="text-lg font-bold text-white group-hover:text-indigo-300 transition-colors tracking-tight">
+                    {project.title}
+                  </h3>
+                  
+                  <p className="text-xs text-gray-400 mt-2.5 leading-relaxed">
+                    {project.description}
+                  </p>
+
+                  {/* Highlights List */}
+                  <ul className="space-y-1.5 mt-5">
+                    {project.features.map((feature, i) => (
+                      <li key={i} className="flex items-start gap-2 text-xs text-gray-500 leading-normal">
+                        <span className="text-indigo-400 font-bold">·</span>
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
 
-                {/* Project Content */}
-                <div className="p-6 flex-grow flex flex-col">
-                  <div className="flex-grow">
-                    <h3 className="text-xl font-bold mb-2 group-hover:text-blue-400 transition-colors">
-                      {project.title}
-                    </h3>
-                    <p className="text-gray-300 mb-4">{project.description}</p>
-
-                    {/* Features List (shown on hover) */}
-                    <motion.ul
-                      className="space-y-1 mb-4 text-sm text-gray-400"
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{
-                        opacity: hoveredProject === index ? 1 : 0,
-                        height: hoveredProject === index ? "auto" : 0,
-                      }}
-                    >
-                      {project.features.map((feature, i) => (
-                        <li key={i} className="flex items-start">
-                          <span className="text-blue-400 mr-2">✓</span>
-                          {feature}
-                        </li>
-                      ))}
-                    </motion.ul>
-                  </div>
-
-                  {/* Technologies */}
-                  <div className="flex flex-wrap gap-2 mb-4">
+                <div className="mt-6">
+                  {/* Tech Stack Tags */}
+                  <div className="flex flex-wrap gap-1.5 mb-6">
                     {project.technologies.map((tech, i) => (
-                      <motion.span
+                      <span
                         key={i}
-                        className="bg-blue-900/50 text-blue-300 text-xs px-3 py-1 rounded-lg border border-blue-800"
-                        whileHover={{ scale: 1.05 }}
+                        className="px-2.5 py-1 rounded bg-white/[0.03] border border-white/[0.08] text-[10px] font-semibold text-gray-300"
                       >
                         {tech}
-                      </motion.span>
+                      </span>
                     ))}
                   </div>
 
-                  {/* Buttons */}
-                  <div className="flex space-x-3 mt-auto">
-                    <motion.a
+                  {/* Actions Row */}
+                  <div className="grid grid-cols-2 gap-3 pt-2">
+                    <a
                       href={project.link}
-                      className="flex-1 text-center text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg transition-colors"
                       target="_blank"
                       rel="noopener noreferrer"
-                      whileHover={{ scale: 1.03 }}
-                      whileTap={{ scale: 0.98 }}
+                      className="block w-full text-center py-2.5 rounded-xl bg-white text-black text-xs font-semibold hover:bg-gray-200 transition-colors shadow-lg shadow-white/[0.02]"
                     >
                       Live Demo
-                    </motion.a>
-                    <motion.a
+                    </a>
+                    <a
                       href={project.github}
-                      className="flex-1 text-center text-white bg-gray-700 hover:bg-gray-600 px-4 py-2 rounded-lg transition-colors flex items-center justify-center gap-1"
                       target="_blank"
                       rel="noopener noreferrer"
-                      whileHover={{ scale: 1.03 }}
-                      whileTap={{ scale: 0.98 }}
+                      className="block w-full text-center py-2.5 rounded-xl bg-white/[0.03] border border-white/[0.08] text-gray-300 text-xs font-semibold hover:bg-white/[0.08] hover:text-white transition-all"
                     >
-                      <svg
-                        className="w-4 h-4"
-                        fill="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                      </svg>
-                      Code
-                    </motion.a>
+                      Source Code
+                    </a>
                   </div>
                 </div>
               </div>

@@ -1,51 +1,17 @@
-/* eslint-disable no-unused-vars */
-import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { TypeAnimation } from "react-type-animation";
-import { Github, Linkedin, Twitter, ArrowRight, Download } from "lucide-react";
-import Femi from "../assets/femi.jpg"
+import { Github, Linkedin, ArrowRight, Download, MapPin } from "lucide-react";
+import Femi from "../assets/IMG_1239.webp";
 
 const Hero = () => {
-  const [isHovering, setIsHovering] = useState(false);
-  const [scrollY, setScrollY] = useState(0);
-  const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
-
-  useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
-    const handleMouseMove = (e) => {
-      setCursorPosition({ x: e.clientX, y: e.clientY });
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    window.addEventListener("mousemove", handleMouseMove);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("mousemove", handleMouseMove);
-    };
-  }, []);
-
   const heroContent = {
-    greeting: "Hi, I'm",
-    name: "OLAWALE, OLUWAFEMI OLUWATOSIN",
-    roles: [
-      "Frontend Developer",
-      2000,
-      "Responsiveness Enthusiast",
-      2000,
-      "React Specialist",
-      2000,
-      "Problem Solver",
-      2000,
-    ],
-    description: [
-      "I'm a Front-end Developer skilled in React, Tailwind, HTML, CSS, Javascript ",
-      "I combine design sensitivity with technical expertise to build high-performance web interfaces.",
-      "I specialize in modern web technologies with a strong focus on responsive design and accessibility.",
-      "My work goes beyond visuals - I create intuitive digital experiences that users love.",
-    ],
-    cta: "Download My Resume",
-    resumeUrl: "https://drive.google.com/file/d/1RJDRPEc94UIbIva-iOMgNfQbV01vfKBk/view?usp=sharing", // Make sure this file exists in your public folder
+    greeting: "Hello, I'm",
+    name: "Olawale Oluwafemi",
+    fullName: "Olawale, Oluwafemi Oluwatosin",
+    role: "Frontend Engineer",
+    location: "Lagos, Nigeria",
+    description: "I build responsive, accessible, and high-performance interfaces. Translating design concepts into pixel-perfect, interactive web applications with a focus on clean code and user experience.",
+    cta: "Download Resume",
+    resumeUrl: "https://drive.google.com/file/d/1RJDRPEc94UIbIva-iOMgNfQbV01vfKBk/view?usp=sharing",
     socialLinks: [
       {
         name: "GitHub",
@@ -60,253 +26,167 @@ const Hero = () => {
     ],
   };
 
-  const imageParallaxStyle = {
-    transform: `translateY(${scrollY * 0.1}px)`,
-  };
-
-  // Cursor follower effect
-  const cursorFollowers = [...Array(2)].map((_, i) => ({
-    style: {
-      left: `${cursorPosition.x - 10 + i * 5}px`,
-      top: `${cursorPosition.y - 10 + i * 5}px`,
-      transition: `all ${0.3 + i * 0.1}s ease-out`,
-      opacity: 0.8 - i * 0.2,
-    },
-  }));
-
   return (
     <section
       id="home"
-      className="min-h-4xl flex items-center justify-center bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white overflow-hidden relative"
-      aria-label="Introduction section"
+      className="relative min-h-screen flex items-center justify-center bg-[#08090a] overflow-hidden pt-28 pb-16"
+      aria-label="Hero Introduction"
     >
-      {/* Cursor followers */}
-      {cursorFollowers.map((follower, i) => (
-        <motion.div
-          key={i}
-          className="fixed w-8 h-8 rounded-full border-2 border-blue-400 pointer-events-none z-50"
-          style={follower.style}
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.8 - i * 0.2, 1, 0.8 - i * 0.2],
-          }}
-          transition={{
-            duration: 2 + i,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
-      ))}
+      {/* Subtle Background Effects */}
+      <div className="absolute inset-0 bg-grid-pattern opacity-60 z-0" />
+      <div className="absolute inset-0 bg-radial-gradient z-0" />
+      
+      {/* Editorial Decorative Grid Line */}
+      <div className="absolute left-1/2 top-0 bottom-0 w-[1px] bg-white/[0.03] hidden lg:block" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 w-full grid grid-cols-1 lg:grid-cols-2 gap-16 items-center relative z-10">
+        
+        {/* Left Column: Content */}
         <motion.article
-          className="space-y-8"
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
+          className="space-y-8 lg:pr-8"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <header className="space-y-4">
+          {/* Status Badge */}
+          <motion.div 
+            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.08] text-xs text-gray-300 font-medium tracking-wide"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.2 }}
+          >
+            <span className="w-1.5 h-1.5 rounded-full bg-indigo-400 animate-pulse" />
+            Available for Opportunities
+          </motion.div>
+
+          <div className="space-y-4">
             <motion.p
-              className="text-2xl md:text-3xl font-medium text-blue-400"
+              className="text-sm uppercase tracking-[0.2em] font-semibold text-indigo-400"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.2 }}
+              transition={{ delay: 0.3 }}
             >
               {heroContent.greeting}
             </motion.p>
-
+            
             <motion.h1
-              className="text-4xl md:text-6xl font-bold leading-tight"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white leading-[1.1]"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
               transition={{ delay: 0.4 }}
             >
-              <span className="text-blue-400 block mt-2 bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600 hover:text-transparent transition-all duration-500">
-                {heroContent.name}
-              </span>
+              {heroContent.name}
             </motion.h1>
 
-            <motion.div
-              className="text-2xl md:text-3xl font-semibold text-gray-300 h-12"
+            <motion.p
+              className="text-lg md:text-xl font-medium text-gray-300"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.6 }}
+              transition={{ delay: 0.5 }}
             >
-              <TypeAnimation
-                sequence={heroContent.roles}
-                wrapper="span"
-                speed={50}
-                repeat={Infinity}
-                className="text-blue-300"
-                style={{ display: "inline-block" }}
-              />
-            </motion.div>
-          </header>
+              {heroContent.role} <span className="text-gray-500 font-normal">based in</span> <span className="inline-flex items-center gap-1 text-gray-300"><MapPin size={16} className="text-indigo-400" /> {heroContent.location}</span>
+            </motion.p>
+          </div>
 
-          <motion.div
-            className="space-y-4"
+          <motion.p
+            className="text-gray-400 text-base md:text-lg leading-relaxed max-w-xl"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.8 }}
+            transition={{ delay: 0.6 }}
           >
-            {heroContent.description.map((paragraph, index) => (
-              <motion.p
-                key={index}
-                className="text-lg md:text-xl leading-relaxed text-gray-300 hover:text-white transition-colors duration-300"
-                whileHover={{ x: 5 }}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.8 + index * 0.2 }}
-              >
-                {paragraph}
-              </motion.p>
-            ))}
-          </motion.div>
+            {heroContent.description}
+          </motion.p>
 
-          <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
-            {/* Resume Download Button */}
-            <motion.a
+          {/* Action Row */}
+          <motion.div 
+            className="flex flex-wrap gap-5 items-center pt-2"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.7 }}
+          >
+            {/* CTA Button */}
+            <a
               href={heroContent.resumeUrl}
-              download="Olawale-Oluwafemi-Resume.pdf"
-              className="relative bg-gradient-to-r from-blue-600 to-blue-800 text-white font-bold py-4 px-8 rounded-xl transition-all duration-300 overflow-hidden group"
-              aria-label="Download my resume"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onHoverStart={() => setIsHovering(true)}
-              onHoverEnd={() => setIsHovering(false)}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 1.2 }}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl bg-white text-black font-semibold text-sm hover:bg-gray-200 transition-all shadow-[0_4px_20px_rgba(255,255,255,0.1)] group"
+              aria-label="Download Resume"
             >
-              <span className="relative z-10 flex items-center gap-2">
-                {heroContent.cta}
-                <motion.span
-                  animate={{ x: isHovering ? 5 : 0 }}
-                  transition={{ type: "spring", stiffness: 500 }}
-                >
-                  <Download size={18} />
-                </motion.span>
-              </span>
-              <motion.span
-                className="absolute inset-0 bg-gradient-to-r from-blue-500 to-blue-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: isHovering ? 1 : 0 }}
-              />
-            </motion.a>
+              {heroContent.cta}
+              <Download size={16} className="group-hover:translate-y-0.5 transition-transform" />
+            </a>
 
             {/* Social Links */}
-            <motion.div
-              className="flex gap-4"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 1.4 }}
-            >
+            <div className="flex items-center gap-3">
               {heroContent.socialLinks.map((link, index) => (
-                <motion.a
+                <a
                   key={index}
                   href={link.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-blue-400 transition-colors duration-300 p-2 rounded-full bg-gray-800 hover:bg-gray-700"
-                  whileHover={{ y: -3, scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 1.4 + index * 0.1 }}
+                  className="w-11 h-11 flex items-center justify-center rounded-xl bg-white/[0.03] border border-white/[0.08] text-gray-400 hover:text-white hover:border-white/20 hover:bg-white/[0.06] transition-all"
+                  aria-label={link.name}
                 >
-                  <span className="sr-only">{link.name}</span>
-                  <link.icon className="w-6 h-6" />
-                </motion.a>
+                  <link.icon size={18} />
+                </a>
               ))}
-            </motion.div>
-          </div>
+            </div>
+          </motion.div>
         </motion.article>
 
-        {/* Profile Image */}
+        {/* Right Column: Portrait Image with Editorial Framework */}
         <motion.figure
-          className="flex justify-center"
-          initial={{ opacity: 0, scale: 0.8 }}
+          className="flex justify-center lg:justify-end"
+          initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.5 }}
+          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
         >
-          <div
-            className="relative w-80 h-80 md:w-[32rem] md:h-[32rem] rounded-2xl overflow-hidden border-4 border-blue-400 shadow-2xl group hover:shadow-blue-500/30 transition-all duration-500"
-            style={imageParallaxStyle}
-          >
-            <img
-              src={Femi}
-              alt="Portrait of OLAWALE, OLUWAFEMI OLUWATOSIN"
-              className="absolute inset-0 w-full h-full object-cover rounded-xl transition-transform duration-700 group-hover:scale-105"
-              width={700}
-              height={700}
-              loading="eager"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-gray-900/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-            <div className="absolute inset-0 border-8 border-transparent group-hover:border-blue-400/30 transition-all duration-500 rounded-xl" />
+          <div className="relative w-72 h-72 sm:w-80 sm:h-80 md:w-[26rem] md:h-[26rem] group">
+            {/* Background Decorative Frame Lines */}
+            <div className="absolute -inset-4 rounded-3xl border border-white/[0.02] bg-grid-pattern pointer-events-none" />
+            <div className="absolute -inset-1 rounded-2xl border border-white/[0.06] pointer-events-none" />
+            <div className="absolute inset-0 rounded-2xl bg-indigo-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+            
+            {/* Main Image Container */}
+            <div className="relative w-full h-full rounded-2xl overflow-hidden border border-white/[0.1] bg-[#0d0f13] shadow-2xl">
+              <img
+                src={Femi}
+                alt={heroContent.fullName}
+                className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03] grayscale hover:grayscale-0"
+                loading="eager"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#08090a]/80 via-transparent to-transparent pointer-events-none" />
+            </div>
 
-            {/* Floating tech badges */}
-            <div className="absolute bottom-4 left-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-              {["React", "Tailwind", "TypeScript"].map((tech, i) => (
-                <motion.span
+            {/* Technology Tags in Grid Frame */}
+            <div className="absolute -bottom-4 right-4 flex gap-2">
+              {["React", "TailwindCSS", "JavaScript"].map((tech, i) => (
+                <span
                   key={i}
-                  className="bg-gray-800/90 text-blue-400 px-3 py-1 rounded-lg text-sm font-medium"
-                  initial={{ y: 20, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ delay: 0.1 * i }}
-                  whileHover={{ scale: 1.05 }}
+                  className="px-3 py-1.5 rounded-lg bg-[#0f1115] border border-white/[0.08] text-xs font-semibold text-gray-300 shadow-xl"
                 >
                   {tech}
-                </motion.span>
+                </span>
               ))}
             </div>
           </div>
         </motion.figure>
       </div>
 
-      {/* Animated background elements */}
-      <div className="absolute inset-0 overflow-hidden z-0">
-        {[...Array(15)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute rounded-full bg-blue-400/10"
-            initial={{
-              x: Math.random() * window.innerWidth,
-              y: Math.random() * window.innerHeight,
-              width: Math.random() * 300 + 100,
-              height: Math.random() * 300 + 100,
-              opacity: 0.1,
-            }}
-            animate={{
-              x: Math.random() * window.innerWidth,
-              y: Math.random() * window.innerHeight,
-              transition: {
-                duration: Math.random() * 20 + 10,
-                repeat: Infinity,
-                repeatType: "reverse",
-              },
-            }}
-          />
-        ))}
-      </div>
-
-      {/* Scroll indicator */}
+      {/* Modern, elegant down-scroll indicator */}
       <motion.div
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center z-10"
-        initial={{ opacity: 0, y: 20 }}
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-2 z-10 cursor-pointer pointer-events-auto"
+        initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1.5 }}
+        transition={{ delay: 1 }}
       >
-        <span className="text-sm text-gray-400 mb-2">Scroll down</span>
+        <span className="text-[10px] uppercase tracking-[0.2em] text-gray-500 font-semibold">Explore</span>
         <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ repeat: Infinity, duration: 1.5 }}
-          className="w-6 h-10 border-2 border-blue-400 rounded-full flex justify-center"
+          animate={{ y: [0, 6, 0] }}
+          transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+          className="w-4 h-7 rounded-full border border-white/20 flex justify-center p-1"
         >
-          <motion.div
-            className="w-1 h-2 bg-blue-400 rounded-full mt-2"
-            animate={{ opacity: [0, 1, 0] }}
-            transition={{ repeat: Infinity, duration: 1.5, delay: 0.2 }}
-          />
+          <div className="w-1 h-1 bg-indigo-400 rounded-full" />
         </motion.div>
       </motion.div>
     </section>
