@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import fax from "../assets/fax-image.png";
-import Flip from "../assets/Flip.png";
+import Flip from "../assets/film.png";
 import Lumina from "../assets/lumina.png";
 
 const Projects = () => {
